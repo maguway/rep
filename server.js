@@ -4,6 +4,10 @@ const path = require('path')
 
 const app = express()
 
+app.get('/api/hotels', (req, res) => {
+    res.sendFile(path.join(__dirname, 'hotels.json'));
+});
+
 app.use('/', serveStatic(path.join(__dirname, '/dist')))
 
 const port = process.env.PORT || 8080

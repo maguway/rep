@@ -1,9 +1,11 @@
+import axios from "axios";
+
 export default {
 
     GET_HOTELS_FROM_JSON({commit}) {
-        return import("../../../hotels.json")
-            .then(hotels => {
-                commit('SET_HOTELS_TO_STATE', hotels.hotels);
+        return axios.get('/api/hotels')
+            .then(({ data: { hotels } }) => {
+                commit('SET_HOTELS_TO_STATE', hotels);
                 return hotels;
             })
             .catch((error) => {
